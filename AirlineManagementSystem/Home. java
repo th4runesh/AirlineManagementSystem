@@ -1,0 +1,93 @@
+package airlinemanagementsystem;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+// Home class for Airline Management System
+// Displays main menu options after login
+public class Home extends JFrame implements ActionListener {
+    
+    // Menu components
+    JMenuBar menuBar;
+    JMenu menuDetails, menuTicket;
+    JMenuItem itemFlightDetails, itemCustomerDetails, itemBookFlight, itemJourneyDetails, itemCancelTicket, itemBoardingPass;
+    
+    public Home() {
+        setLayout(null);
+        
+        // Background image
+        ImageIcon bgImage = new ImageIcon(ClassLoader.getSystemResource("airlinemanagementsystem/icons/front.jpg"));
+        JLabel lblImage = new JLabel(bgImage);
+        lblImage.setBounds(0, 0, 1600, 800);
+        add(lblImage);
+        
+        // Heading label
+        JLabel lblHeading = new JLabel("AIR INDIA WELCOMES YOU");
+        lblHeading.setBounds(500, 40, 1000, 40);
+        lblHeading.setForeground(Color.BLUE);
+        lblHeading.setFont(new Font("Tahoma", Font.PLAIN, 36));
+        lblImage.add(lblHeading);
+        
+        // Menu bar
+        menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        
+        // Details menu
+        menuDetails = new JMenu("Details");
+        menuBar.add(menuDetails);
+        
+        itemFlightDetails = new JMenuItem("Flight Details");
+        itemFlightDetails.addActionListener(this);
+        menuDetails.add(itemFlightDetails);
+        
+        itemCustomerDetails = new JMenuItem("Add Customer Details");
+        itemCustomerDetails.addActionListener(this);
+        menuDetails.add(itemCustomerDetails);
+        
+        itemBookFlight = new JMenuItem("Book Flight");
+        itemBookFlight.addActionListener(this);
+        menuDetails.add(itemBookFlight);
+        
+        itemJourneyDetails = new JMenuItem("Journey Details");
+        itemJourneyDetails.addActionListener(this);
+        menuDetails.add(itemJourneyDetails);
+        
+        itemCancelTicket = new JMenuItem("Cancel Ticket");
+        itemCancelTicket.addActionListener(this);
+        menuDetails.add(itemCancelTicket);
+        
+        // Ticket menu
+        menuTicket = new JMenu("Ticket");
+        menuBar.add(menuTicket);
+        
+        itemBoardingPass = new JMenuItem("Boarding Pass");
+        menuTicket.add(itemBoardingPass);
+        
+        // Full screen
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setVisible(true);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        String command = ae.getActionCommand();
+        
+        // Open corresponding modules
+        if (command.equals("Add Customer Details")) {
+            new AddCustomer();  // Make sure AddCustomer.java exists
+        } else if (command.equals("Flight Details")) {
+            new FlightInfo();   // Make sure FlightInfo.java exists
+        } else if (command.equals("Book Flight")) {
+            new BookFlight();   // Make sure BookFlight.java exists
+        } else if (command.equals("Journey Details")) {
+            new JourneyDetails(); // Make sure JourneyDetails.java exists
+        } else if (command.equals("Cancel Ticket")) {
+            new Cancel();       // Make sure Cancel.java exists
+        }
+    }
+    
+    public static void main(String[] args) {
+        new Home();
+    }
+}
