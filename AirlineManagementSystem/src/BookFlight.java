@@ -4,16 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-import com.toedter.calendar.JDateChooser;
 import java.util.*;
 
 public class BookFlight extends JFrame implements ActionListener {
 
-    JTextField tfaadhar;
+    JTextField tfaadhar, dcdate; // replaced JDateChooser with JTextField
     JLabel tfname, tfnationality, tfaddress, labelgender, labelfname, labelfcode;
     JButton bookflight, fetchButton, flight;
     Choice source, destination;
-    JDateChooser dcdate;
 
     public BookFlight() {
         getContentPane().setBackground(Color.WHITE);
@@ -139,7 +137,7 @@ public class BookFlight extends JFrame implements ActionListener {
         lbldate.setFont(new Font("Tahoma", Font.PLAIN, 16));
         add(lbldate);
 
-        dcdate = new JDateChooser();
+        dcdate = new JTextField(); // simple text field for date
         dcdate.setBounds(220, 530, 150, 25);
         add(dcdate);
 
@@ -156,7 +154,7 @@ public class BookFlight extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        // logic goes here (keep as-is)
+        // keep existing logic here
     }
 
     public static void main(String[] args) {
