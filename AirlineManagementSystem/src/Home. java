@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// Home class for Airline Management System
 // Displays main menu options after login
 public class Home extends JFrame implements ActionListener {
     
